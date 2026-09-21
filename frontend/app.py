@@ -4,7 +4,13 @@ import pandas as pd
 import requests
 
 # Base URL of the Flask backend
-BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:7860")
+try:
+    BACKEND_URL = st.secrets["BACKEND_URL"]
+except Exception:
+    BACKEND_URL = os.getenv(
+        "BACKEND_URL",
+        "http://127.0.0.1:7860"
+    )
 
 # Page title
 st.title("SuperKart System")
